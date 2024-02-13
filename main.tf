@@ -23,11 +23,9 @@ resource "time_sleep" "wait_30_seconds" {
 }
 
 resource "google_sql_database_instance" "primary" {
-  name                = var.gcp_pg_name_primary
-  database_version    = var.gcp_pg_database_version
-  region              = var.gcp_pg_region_primary
-  deletion_protection = false
-
+  name             = var.gcp_pg_name_primary
+  database_version = var.gcp_pg_database_version
+  region           = var.gcp_pg_region_primary
 
   settings {
     tier = var.gcp_pg_tier
