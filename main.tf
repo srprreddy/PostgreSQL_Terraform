@@ -30,6 +30,7 @@ resource "google_sql_database_instance" "primary" {
   settings {
     tier      = var.gcp_pg_tier
     disk_size = 10
+    disk_type = "PD_HDD"
     ip_configuration {
       ipv4_enabled = true
       authorized_networks {
@@ -41,28 +42,6 @@ resource "google_sql_database_instance" "primary" {
 
   depends_on = [google_project_service.services, time_sleep.wait_30_seconds]
 
-}
-
-
-resource "google_sql_database_instance" "master" {
-  name                = "gcloudpostgresqlinstance1"
-  database_version    = "POSTGRES_9_6"
-  region              = "europe-west1"
-  deletion_protection = false
-  settings {
-    tier              = "db-f1-micro"
-    availability_type = "ZONAL"
-    disk_autoresize   = false
-    disk_size         = 10
-    disk_type         = "PD_HDD"
-    ip_configuration {
-      ipv4_enabled = true
-      authorized_networks {
-        name  = "all_networks"
-        value = "0.0.0.0/0"
-      }
-    }
-  }
 }
 
 output "instance_primary_ip_address" {
