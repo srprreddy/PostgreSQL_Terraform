@@ -26,13 +26,3 @@ variable "gcp_pg_tier" {
   type    = string
   default = "db-f1-micro"
 }
-
-variable "gcp_pg_db_flag_name" {
-  type    = string
-  default = "cloudsql.logical"
-}
-
-variable "gcp_pg_db_flag_value" {
-  type    = string
-  default = "on"
-}
