@@ -31,7 +31,7 @@ resource "google_sql_database_instance" "primary" {
   settings {
     tier      = var.gcp_pg_tier
     disk_size = 10
-    disk_type = "PD_HDD"
+    disk_type = "PD_SSD"
     ip_configuration {
       ipv4_enabled = true
       authorized_networks {
